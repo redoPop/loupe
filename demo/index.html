@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>loupe | demo</title>
+
+	<style type="text/css" media="screen">
+		body, html { height:100%; margin:0; overflow:hidden; padding:0; width:100%; }
+		a.demo { float:left; }
+		a img { border:none; }
+		div { margin:0 auto; position:relative; top:50%; width:430px; }
+		img.demo { float:right; }
+		.demo { position:relative; top:-120px; }
+		.loupe { background-color:#555; background:rgba(0, 0, 0, 0.25); border:5px solid rgba(0, 0, 0, 0); cursor:url(blank.gif), url(blank.cur), none; }
+	</style>
+</head>
+
+<body>
+	<div>
+		<a class="demo" href="http://farm4.static.flickr.com/3598/3551599565_9dd3f9c6a1.jpg">
+			<img src="http://farm4.static.flickr.com/3598/3551599565_9dd3f9c6a1_m.jpg" width="191" height="240" />
+		</a>
+		<img class="demo" src="http://farm3.static.flickr.com/2479/3549662506_4374920e94.jpg" width="191" height="240" />
+	</div>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="../jquery.loupe.js"></script>
+	<script type="text/javascript">$('.demo').loupe()</script>
+</body>
+</html>
