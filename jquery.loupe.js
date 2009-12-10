@@ -1,6 +1,6 @@
 /**
  * loupe - an image magnifier for jQuery
- * http://jdbartlett.github.com/loupe.html
+ * http://github.com/jdbartlett/loupe
  */
 (function($) {
 	$.fn.loupe = function(options) {
@@ -10,7 +10,7 @@
 			width: 200,
 			height: 150
 		}, options || {});
-		
+
 		this.each(function() {
 			var $this = $(this), loupe = null, big = null, small = null,
 			move = function(e) {
@@ -28,16 +28,16 @@
 					top: -(((e.pageY - offset.top) / smallHeight) * big.height() - options.height/2)|0
 				});
 			}
-			
+
 			$this.mouseenter(function(e) {
-				if (!small) small = ($this.is('img') ? $this : $this.find('img:first'));
+				if (!small) small = $this.is('img') ? $this : $this.find('img:first');
 				loupe = (loupe || (loupe = $('<div></div>')
 					.addClass(options.loupe)
 					.css({
 						width:options.width+'px', height:options.height+'px',
 						position:'absolute', overflow:'hidden'
 					})
-					.append(big = $('<img src="' + $this.attr('href') + '" />').css({position:'absolute'}))
+					.append(big = $('<img src="' + $this.attr($this.is('img') ? 'src' : 'href') + '" />').css({position:'absolute'}))
 					.mousemove(move)
 					.appendTo('body')
 				)).show();
@@ -46,7 +46,7 @@
 				return false;
 			});
 		});
-		
+
 		return this;
 	}
 })(jQuery);
