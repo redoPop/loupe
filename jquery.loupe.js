@@ -1,82 +1,69 @@
 /**
  * loupe - an image magnifier for jQuery
+ * (C) 2010 jdbartlett, MIT license
  * http://github.com/jdbartlett/loupe
  */
 (function ($) {
-	$.fn.loupe = function (options) {
-		if (!this.length) {
-			return this;
-		}
-		
-		options = $.extend({
+	$.fn.loupe = function (arg) {
+		var options = $.extend({
 			loupe: 'loupe',
 			width: 200,
 			height: 150
-		}, options || {});
+		}, arg || {}), undefined;
 		
-		this.each(function () {
-			var $this = $(this),
-				loupe, big, small, time,
-				hide, move;
+		return this.length ? this.each(function () {
+			var $this = $(this), $big, $loupe,
+				$small = $this.is('img') ? $this : $this.find('img:first'),
+				move, hide = function () { $loupe.hide(); },
+				time;
 			
-			hide = function () {
-				loupe.hide();
-			};
+			if ($this.data('loupe') !== undefined) {
+				return $this.data('loupe', arg);
+			}
 			
 			move = function (e) {
-				var os, sW, sH, oW, oH;
+				var os = $small.offset(),
+					sW = $small.outerWidth(),
+					sH = $small.outerHeight(),
+					oW = options.width / 2,
+					oH = options.height / 2;
 				
-				os = small.offset();
-				sW = small.outerWidth();
-				sH = small.outerHeight();
-				oW = options.width / 2;
-				oH = options.height / 2;
-				
-				if (e.pageX > sW + os.left + 10 || e.pageX < os.left - 10 ||
+				if (!$this.data('loupe') ||
+					e.pageX > sW + os.left + 10 || e.pageX < os.left - 10 ||
 					e.pageY > sH + os.top + 10 || e.pageY < os.top - 10) {
 					return hide();
 				}
 				
-				if (time && clearTimeout(time)) {
-					time = null;
-				}
+				time = time ? clearTimeout(time) : 0;
 				
-				loupe.css({
+				$loupe.show().css({
 					left: e.pageX - oW,
 					top: e.pageY - oH
 				});
-				big.css({
-					left: -(((e.pageX - os.left) / sW) * big.width() - oW)|0,
-					top: -(((e.pageY - os.top) / sH) * big.height() - oH)|0
+				$big.css({
+					left: -(((e.pageX - os.left) / sW) * $big.width() - oW)|0,
+					top: -(((e.pageY - os.top) / sH) * $big.height() - oH)|0
 				});
 			};
-
-			$this.mouseenter(function (e) {
-				if (!small) {
-					small = $this.is('img') ? $this : $this.find('img:first');
-				}
-				
-				loupe = (loupe || (loupe = $('<div></div>')
-					.addClass(options.loupe)
-					.css({
-						width: options.width,
-						height: options.height,
-						position: 'absolute',
-						overflow: 'hidden'
-					})
-					.append(big = $('<img src="' + $this.attr($this.is('img') ? 'src' : 'href') + '" />').css({
-						position: 'absolute'
-					}))
-					.mousemove(move)
-					.appendTo('body')
-				)).show();
-				
-				move(e);
-			}).mouseout(function () {
-				time = setTimeout(hide, 10);
-			});
-		});
-		
-		return this;
+			
+			$loupe = $('<div />')
+				.addClass(options.loupe)
+				.css({
+					width: options.width,
+					height: options.height,
+					position: 'absolute',
+					overflow: 'hidden'
+				})
+				.append($big = $('<img />').attr('src', $this.attr($this.is('img') ? 'src' : 'href')).css('position', 'absolute'))
+				.mousemove(move)
+				.hide()
+				.appendTo('body');
+			
+			$this.data('loupe', true)
+				.mouseenter(move)
+				.mouseout(function () {
+					time = setTimeout(hide, 10);
+				});
+		}) : this;
 	};
 }(jQuery));
