@@ -6,10 +6,10 @@
 
 	<link rel="stylesheet" type="text/css" href="/reset.css" media="screen" />
 	<style type="text/css" media="screen">
-		html { background:#05417D; }
-		body { background:#0F5FB8; color:#000; font:1em Helvetica,Arial,sans-serif; font-weight:lighter; line-height:1.6em; margin:0 auto; max-width:40em; padding:60px 40px 60px; }
+		html { background:#e7e7e7; }
+		body { background:#e1e1e3; color:#111; font:1em Helvetica,Arial,sans-serif; font-weight:lighter; line-height:1.6em; margin:0 auto; max-width:40em; padding:60px 40px 60px; }
 
-		a { background:#6A96D3; color:#000; display:inline-block; line-height:1.4em; margin:0.1em 0; padding:0 4px; text-decoration:none; }
+		a { background:#555; color:#fff; display:inline-block; line-height:1.4em; margin:0.1em 0; padding:0 4px; text-decoration:none; }
 		a:hover { background:#FF8940; }
 			a img { border:none; }
 		h1, h2 { font:1.9em Myriad Pro, Trebuchet MS, Arial, Sans-Serif; font-weight:lighter; margin:0 0 20px; }
@@ -17,7 +17,7 @@
 		pre { background:#FFE273; color:#222; border:2px solid #EFD263; font:0.8em monaco; margin:20px; padding:20px; }
 
 		.demo { clear:both; margin:60px 0; overflow:hidden; width:100%; }
-		.loupe { background-color:#555; background:rgba(0, 0, 0, 0.25); border:5px solid rgba(0, 0, 0, 0); cursor:url(blank.gif), url(blank.cur), none; }
+		.loupe { background-color:#555; background:rgba(0, 0, 0, 0.25); border:5px solid rgba(0, 0, 0, 0); cursor:url(blank.png), url(blank.cur), none; }
 		#demo-1, #demo-2 { background:transparent; float:left; margin-right:20px; }
 	</style>
 
@@ -27,13 +27,13 @@
 
 <body>
 	<h1>loupe | a jQuery image magnifier</h1>
-	<p>loupe is a lightweight (1.6 kb) onhover image magnifier for jQuery. just download <a href="jquery.loupe.js">jquery.loupe.js</a> and initialize it like:</p>
+	<p>loupe is a lightweight (~1k minified) onhover image magnifier for jQuery. just download <a href="jquery.loupe.min.js">jquery.loupe.min.js</a> and initialize it like:</p>
 	<pre>$('selector').loupe({
   width: 200, // <strong>width</strong> of magnifier
   height: 150, // <strong>height</strong> of magnifier
   loupe: 'loupe' // <strong>css class</strong> for magnifier
 });</pre>
-	<p>all settings are optional. the selector should reference links containing thumbnail images, or images shrunk by the browser. some demos:</p>
+	<p>the selector should reference links containing thumbnail images, or images shrunk by the browser. the settings (width, etc.) are optional. some demos:</p>
 
 	<div class="demo">
 		<h2>demo 1: large image linked</h2>
@@ -64,11 +64,13 @@ $('#demo-1').loupe();</pre>
 
 $('#demo-2').loupe();</pre>
 	</div>
-	
+
 	<h2>links &amp; stuff</h2>
 	<ul>
 		<li><a href="http://github.com/jdbartlett/loupe">github repository page</a></li>
 		<li><a href="http://github.com/jdbartlett/loupe/zipball/master">download .zip</a> or <a href="http://github.com/jdbartlett/loupe/tarball/master">.tar.gz</a> (with demos)</li>
 	</ul>
+
+	<a href="http://github.com/jdbartlett/loupe"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://assets2.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028?repo=&url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_right_orange_ff7600.png&path=" alt="Fork me on GitHub"></a>
 </body>
 </html>
