@@ -4,7 +4,6 @@
 	<meta charset="utf-8" />
 	<title>loupe | a jQuery image magnifier</title>
 
-	<link rel="stylesheet" type="text/css" href="/reset.css" media="screen" />
 	<style type="text/css" media="screen">
 		html { background:#e7e7e7; }
 		body { background:#e1e1e3; color:#111; font:1em Helvetica,Arial,sans-serif; font-weight:lighter; line-height:1.6em; margin:0 auto; max-width:40em; padding:60px 40px 60px; }
@@ -20,9 +19,6 @@
 		.loupe { background-color:#555; background:rgba(0, 0, 0, 0.25); border:5px solid rgba(0, 0, 0, 0); cursor:url(blank.png), url(blank.cur), none; }
 		#demo-1, #demo-2 { background:transparent; float:left; margin-right:20px; }
 	</style>
-
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
-	<script type="text/javascript" src="jquery.loupe.js"></script>
 </head>
 
 <body>
@@ -40,9 +36,6 @@
 		<a id="demo-1" href="http://farm4.static.flickr.com/3598/3551599565_9dd3f9c6a1.jpg">
 			<img src="http://farm4.static.flickr.com/3598/3551599565_9dd3f9c6a1_m.jpg" />
 		</a>
-		<script type="text/javascript">
-			$('#demo-1').loupe();
-		</script>
 
 		<p>the code:</p>
 		<pre>&lt;a id="demo-1" href="bigimage.jpg"&gt;
@@ -55,9 +48,6 @@ $('#demo-1').loupe();</pre>
 	<div class="demo">
 		<h2>demo 2: large image shrunk by browser</h2>
 		<img id="demo-2" src="http://farm3.static.flickr.com/2479/3549662506_4374920e94.jpg" width="191" height="240" />
-		<script type="text/javascript">
-			$('#demo-2').loupe();
-		</script>
 
 		<p>the code:</p>
 		<pre>&lt;img id="demo-2" src="bigimage.jpg" /&gt;
@@ -72,5 +62,12 @@ $('#demo-2').loupe();</pre>
 	</ul>
 
 	<a href="http://github.com/jdbartlett/loupe"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://assets2.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028?repo=&url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_right_orange_ff7600.png&path=" alt="Fork me on GitHub"></a>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="jquery.loupe.min.js"></script>
+	<script>
+		$('#demo-1').loupe();
+		$('#demo-2').loupe();
+	</script>
 </body>
 </html>
