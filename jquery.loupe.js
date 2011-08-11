@@ -12,10 +12,14 @@
 		}, arg || {});
 
 		return this.length ? this.each(function () {
-			var $this = $(this), $big, $loupe,
+			var $this = $(this), $window = $(window), $big, $loupe,
 				$small = $this.is('img') ? $this : $this.find('img:first'),
 				move, hide = function () { $loupe.hide(); },
 				time;
+
+			$window.scroll(function() {
+				$loupe.hide()
+			});
 
 			if ($this.data('loupe') != null) {
 				return $this.data('loupe', arg);
