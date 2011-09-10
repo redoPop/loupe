@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b7790445-75b1-4668-a7f3-866ed8ecc222" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/clickdemo/index.html" />
-    </list>
+    <list default="true" id="b7790445-75b1-4668-a7f3-866ed8ecc222" name="Default" comment="" />
     <ignored path="loupe.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,19 +23,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/clickdemo/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="48" selection-start="1355" selection-end="1355" vertical-scroll-proportion="0.5052209">
+            <state line="46" column="27" selection-start="1682" selection-end="1682" vertical-scroll-proportion="-28.423077">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jquery.loupe.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="jquery.loupe.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jquery.loupe.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="27" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0">
+            <state line="44" column="66" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.761605">
               <folding />
             </state>
           </provider>
@@ -97,6 +95,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="loupe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loupe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loupe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clickdemo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -229,16 +241,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jquery.loupe.js">
+    <entry file="file://$PROJECT_DIR$/clickdemo/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="27" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0">
+        <state line="46" column="27" selection-start="1682" selection-end="1682" vertical-scroll-proportion="-28.423077">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clickdemo/index.html">
+    <entry file="file://$PROJECT_DIR$/jquery.loupe.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="48" selection-start="1355" selection-end="1355" vertical-scroll-proportion="0.5052209">
+        <state line="44" column="66" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.761605">
           <folding />
         </state>
       </provider>
