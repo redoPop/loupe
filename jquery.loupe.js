@@ -14,12 +14,58 @@
 		return this.length ? this.each(function () {
 			var $this = $(this), $big, $loupe,
 				$small = $this.is('img') ? $this : $this.find('img:first'),
-				move, hide = function () { $loupe.hide(); },
+				tmove, move, hide = function () { $loupe.hide(); },
 				time;
 
 			if ($this.data('loupe') != null) {
 				return $this.data('loupe', arg);
 			}
+
+			tmove = function(e) {
+				var eMouse = null;
+				
+				if(e !== null && typeof(e.originalEvent.targetTouches)!='undefined' &&
+					e.originalEvent.targetTouches.length>0)
+				{
+					var objTouch = e.originalEvent.targetTouches[e.originalEvent.targetTouches.length-1];
+					
+					if(objTouch!==null)
+					{
+						if(typeof(objTouch.pageX)!='undefined' && !isNaN(objTouch.pageX))
+						{
+							eMouse = 
+								{ 
+									pageX: objTouch.pageX,
+									pageY: objTouch.pageY
+								};
+						}
+						else if(typeof(objTouch.clientX)!='undefined' && !isNaN(objTouch.clientX))
+						{
+							eMouse = 
+								{ 
+									pageX: objTouch.clientX,
+									pageY: objTouch.clientY
+								};
+						}
+						else if(typeof(objTouch.screenX)!='undefined' && !isNaN(objTouch.screenX))
+						{
+							eMouse = 
+								{ 
+									pageX: objTouch.screenX,
+									pageY: objTouch.screenY
+								};
+						}
+					}
+				}
+
+				if(eMouse!==null)
+				{
+					e.preventDefault();
+					return move(eMouse);
+				}
+				else
+					return hide();
+			};
 
 			move = function (e) {
 				var os = $small.offset(),
@@ -56,12 +102,14 @@
 				})
 				.append($big = $('<img />').attr('src', $this.attr($this.is('img') ? 'src' : 'href')).css('position', 'absolute'))
 				.mousemove(move)
+				.on('touchstart touchmove', tmove)
 				.hide()
 				.appendTo('body');
 
 			$this.data('loupe', true)
 				.mouseenter(move)
-				.mouseout(function () {
+				.on('touchstart touchenter touchmove', tmove)
+				.on('mouseout touchend touchleave touchcancel', function () {
 					time = setTimeout(hide, 10);
 				});
 		}) : this;
