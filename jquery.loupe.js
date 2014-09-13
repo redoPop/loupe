@@ -8,7 +8,8 @@
 		var options = $.extend({
 			loupe: 'loupe',
 			width: 200,
-			height: 150
+			height: 150,
+			src: ''
 		}, arg || {});
 
 		return this.length ? this.each(function () {
@@ -80,7 +81,7 @@
 					position: 'absolute',
 					overflow: 'hidden'
 				})
-				.append($big = $('<img />').attr('src', $this.attr($this.is('img') ? 'src' : 'href')).css('position', 'absolute'))
+				.append($big = $('<img />').attr('src', options.src ? options.src : $this.attr($this.is('img') ? 'src' : 'href')).css('position', 'absolute'))
 				.mousemove(move)
 				.mouseleave(hide)
 				.hide()
