@@ -56,6 +56,7 @@
 				})
 				.append($big = $('<img />').attr('src', $this.attr($this.is('img') ? 'src' : 'href')).css('position', 'absolute'))
 				.mousemove(move)
+				.mouseleave(hide)
 				.hide()
 				.appendTo('body');
 
@@ -64,7 +65,6 @@
 				.mouseout(function () {
 					time = setTimeout(hide, 10);
 				});
-			$($loupe).mouseleave(hide);
 		}) : this;
 	};
 }(jQuery));
