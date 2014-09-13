@@ -15,10 +15,19 @@
 			var $this = $(this), $big, $loupe,
 				$small = $this.is('img') ? $this : $this.find('img:first'),
 				move, hide = function () { $loupe.hide(); },
-				time;
+				time, destroy, data;
 
-			if ($this.data('loupe') != null) {
-				return $this.data('loupe', arg);
+			data = $this.data('loupe');
+			if (data != null) {
+				if ('destroy' === arg) {
+					return data.destroy();
+				}
+				
+				data.enabled = arg;
+				return $this.data('loupe', data);
+			} else if ('destroy' === arg) {
+				// Nothing to destroy yet
+				return;
 			}
 
 			move = function (e) {
@@ -28,7 +37,7 @@
 					oW = options.width / 2,
 					oH = options.height / 2;
 
-				if (!$this.data('loupe') ||
+				if (!$this.data('loupe').enabled ||
 					e.pageX > sW + os.left + 10 || e.pageX < os.left - 10 ||
 					e.pageY > sH + os.top + 10 || e.pageY < os.top - 10) {
 					return hide();
@@ -59,10 +68,15 @@
 				.mouseleave(hide)
 				.hide()
 				.appendTo('body');
+			
+			destroy = function() {
+				$loupe.remove();
+				$this.unbind('.loupe').removeData('loupe');
+			};
 
-			$this.data('loupe', true)
-				.mouseenter(move)
-				.mouseout(function () {
+			$this.data('loupe', {destroy: destroy, enabled: true})
+				.bind('mouseenter.loupe', move)
+				.bind('mouseout.loupe', function () {
 					time = setTimeout(hide, 10);
 				});
 		}) : this;
