@@ -65,6 +65,7 @@
 				.mouseout(function () {
 					time = setTimeout(hide, 10);
 				});
+			$($loupe).mouseleave(hide);
 		}) : this;
 	};
 }(jQuery));
