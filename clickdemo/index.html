@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>loupe | demo</title>
+
+	<style type="text/css" media="screen">
+		body, html { height:100%; margin:0; overflow:hidden; padding:0; width:100%; }
+		a.demo { float:left; }
+		a img { border:none; }
+		div { margin:0 auto; position:relative; top:50%; width:430px; }
+		img.demo { float:right; }
+		.demo { position:relative; top:-120px; }
+		.loupe { background-color:#555; background:rgba(0, 0, 0, 0.25); border:5px solid rgba(0, 0, 0, 0); cursor:url(blank.png), url(blank.cur), none; }
+	</style>
+
+	<style type="text/css">
+		.zoomable {
+			width: 400px;
+		}
+	</style>
+	
+</head>
+
+<body>
+	<img class="zoomable" src="http://www.flashcoo.com/animal/FREE_ANIMAL/wallpapers/1024x768/ATIGER.JPG"/>
+	<img class="zoomable" src="http://3.bp.blogspot.com/_t20nYP_aeuE/TALJCff55cI/AAAAAAAABps/GYcZ8PouyFA/s1600/green+tree+python+-+whipsnade+wild+animal+park.jpg"/>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript" src="../jquery.loupe.js"></script>
+	<script type="text/javascript">
+		$('.zoomable').click(function(e) {
+			//check if loupe already exists for this image
+			var src = $(this).attr('src');
+			var imageLoupe = $('.loupe-control img[src="' + src + '"]').parent();
+			//create loupe if it doesn't already exist
+			if (!imageLoupe.length > 0) {
+				$(this).loupe({
+					width: 250, // width of magnifier
+					height: 150, // height of magnifier
+					loupe: 'loupe-control' //css class for magnifier
+				});
+				src = $(this).attr('src');
+				imageLoupe = $('.loupe-control img[src="' + src + '"]').parent();
+			}
+
+			//adjust the position
+			imageLoupe.css({
+				left: e.pageX - imageLoupe.outerWidth() / 2,
+				top: e.pageY - imageLoupe.outerHeight() / 2,
+				visibility: 'visible',
+				display: 'block'
+			});
+		});
+
+		//hide the loupe when clicked
+		$('.loupe-control').live('click', function(e) {
+			$(this).css('visibility', 'hidden');
+		});
+		
+	</script>
+</body>
+</html>
