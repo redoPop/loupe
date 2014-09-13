@@ -56,6 +56,7 @@
 				})
 				.append($big = $('<img />').attr('src', $this.attr($this.is('img') ? 'src' : 'href')).css('position', 'absolute'))
 				.mousemove(move)
+				.mouseleave(hide)
 				.hide()
 				.appendTo('body');
 
