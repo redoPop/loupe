@@ -13,4 +13,12 @@ Loupe is designed with progressive enhancement in mind, and will simply not show
 
 ### Touch screen support
 
-Image magnifiers can be nice for input types that produce mouse pointers (e.g., mice, trackpads) but are an awful and unnecessary UI for image zooming on touch screens, and loupe purposely avoids activating itself on touch screens. This has been device tested on iOS and Android, and if you discover a touch screen context in which loupe causes interference please file an issue!
+Image magnifiers work well with mice and trackpads, but there are better options for touch screens. Loupe purposely avoids activating itself on touch screens.
+
+## Q&A
+
+#### Wasn't this a jQuery plugin?
+
+It was! The jQuery version is still supported [in 1.x releases](https://github.com/redoPop/loupe/releases), but no new features, API changes, or configuration options will be added to it in this repo.
+
+There are several forks of the jQuery version with new features and customization options, so if that's a thing you're interested in then please do mosey on over to [the list of forks](https://github.com/redoPop/loupe/network) and see if there's an active fork offering what you want.
