@@ -1,10 +1,6 @@
 /**
 Loupe 2.0.0
-http://github.com/redoPop/loupe
-
-Copyright 2014 Joe Bartlett
-Released under the WTFPL license
-http://sam.zoy.org/wtfpl/
+https://github.com/redoPop/loupe
 */
 
 /**
