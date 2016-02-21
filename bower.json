@@ -1,0 +1,9 @@
+{
+  "name": "loupe",
+  "description": "A lightweight image magnifier for modern browsers.",
+  "main": "loupe.js",
+  "license": "WTFPL",
+  "ignore": [
+    ".editorconfig"
+  ]
+}
