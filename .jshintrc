@@ -6,7 +6,7 @@
   "browser": true,
 
   // Disallow ES6.
-  "esnext": false,
+  "esversion": 5,
 
   // ENFORCING OPTIONS
   // =================
