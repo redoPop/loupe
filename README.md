@@ -2,6 +2,42 @@
 
 Loupe is a lightweight, hackable [pointer-based](#touch-screen-support) image magnifier for [modern browsers](#browser-compatibility).
 
+## Installation
+
+Loupe is available as a Bower package:
+
+```
+bower install loupe
+```
+
+## Basic use
+
+Add `loupe.js` and some accompanying CSS (modeled on `loupe.css`) to your page.
+
+`Loupe` is a constructor function, and should be called with an element as its only parameter. That element can be a link to a larger version of the image:
+
+```html
+<a id="demo-1" href="big.jpg">
+  <img src="small.jpg" />
+</a>
+
+<script>
+  new Loupe(document.getElementById('demo-1'));
+</script>
+```
+
+…or it can be the image itself, in which case a magnified version of the same image source will be displayed in the loupe:
+
+```html
+<img id="demo-2" src="big.jpg" />
+
+<script>
+  new Loupe(document.getElementById('demo-2'));
+</script>
+```
+
+(Obviously you wouldn't actually use inline JS for this! These examples are just to demonstrate loupe construction!)
+
 ## Browser compatibility
 
 Loupe is designed with progressive enhancement in mind, and will simply not show up in environments that don't support it. It's been tested and works in the following clients:
