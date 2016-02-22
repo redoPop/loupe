@@ -11,12 +11,15 @@ A new loupe instance.
 var loupe = new Loupe(document.getElementById('image'));
 */
 function Loupe(el) {
+  'use strict';
+
   this.init(el);
 }
 
 // Giant IIFE to avoid scope pollution if someone needs to add
 // this source script to their project directly! (Tch!)
 (function (Loupe) {
+  'use strict';
 
   // Adapted from Modernizr's pointerevents feature detect
   var canPoint = document.createElement('x');
@@ -33,7 +36,7 @@ function Loupe(el) {
 
   // Helper method to normalize event.offset(X|Y)
   function eventOffset(event, axis) {
-    return event[_offset + axis] == undefined ?
+    return event[_offset + axis] === undefined ?
     event['layer' + axis] - event.target[_offset + (axis === 'X' ? 'Left' : 'Top')] :
     event[_offset + axis];
   }
@@ -119,7 +122,7 @@ function Loupe(el) {
     @param {HTMLElement}
     */
     init: function (el) {
-      var self = this;
+      var _this = this;
 
       // If the browser doesn't support pointer-events,
       // halt loupe's initialization!
@@ -128,13 +131,13 @@ function Loupe(el) {
       }
 
       // Create local versions of unshared objects
-      self._ = {};
-      self.range = self.range.slice(0);
+      _this._ = {};
+      _this.range = _this.range.slice(0);
 
-      self.el = el;
+      _this.el = el;
 
-      self.render();
-      self.listen();
+      _this.render();
+      _this.listen();
     },
 
     /**
@@ -159,11 +162,11 @@ function Loupe(el) {
     Renders the loupe element.
     */
     render: function () {
-      var self = this;
+      var _this = this;
 
-      self.lens = document.createElement('div');
-      self.lens.className += ' ' + self.classes.lens;
-      document.body.appendChild(self.lens);
+      _this.lens = document.createElement('div');
+      _this.lens.className += ' ' + _this.classes.lens;
+      document.body.appendChild(_this.lens);
     },
 
     /**
@@ -174,12 +177,13 @@ function Loupe(el) {
     @param {HTMLImageElement} el Source or root image element
     */
     image: function (imageEl) {
-      var self = this;
+      var _this = this;
 
-      if (self._.l === imageEl) {
-        return self._.s;
+      if (_this._.l === imageEl) {
+        return _this._.s;
       }
-      self._.l = imageEl;
+
+      _this._.l = imageEl;
 
       var newS;
       var el = imageEl;
@@ -197,7 +201,8 @@ function Loupe(el) {
       if (!newS) {
         newS = imageEl.src;
       }
-      self._.s = newS;
+
+      _this._.s = newS;
 
       return newS;
     },
@@ -208,37 +213,40 @@ function Loupe(el) {
     @param {MouseEvent} [event] - mousemove event.
     */
     refresh: function () {
-      var self = this;
-      var style = self.lens.style;
-      var event = arguments[0] || self._.e;
+      var _this = this;
+      var style = _this.lens.style;
+      var event = arguments[0] || _this._.e;
 
       if (event && event.target) {
-        style.backgroundImage = 'url("' + self.image(event.target) + '")';
+        style.backgroundImage = 'url("' + _this.image(event.target) + '")';
       }
 
       // Ignore the very first this.move call: it could be a
       // simulated pointer event!
-      if (self._.e) {
+      if (_this._.e) {
         var elComputedStyle = getComputedStyle(event.target);
-        var loComputedStyle = getComputedStyle(self.lens);
+        var loComputedStyle = getComputedStyle(_this.lens);
 
-        self.show();
+        _this.show();
 
         // Change the loupe position
-        style.transform = style.webkitTransform = 'translate(' + event.pageX + 'px,' + event.pageY + 'px)';
+        style.transform = style.webkitTransform = 'translate(' +
+          event.pageX + 'px,' + event.pageY + 'px)';
 
         // Adjust zoom level and background size
-        self.lens.style.backgroundSize =
-          intify(elComputedStyle.width) * self.zoom + 'px ' +
-          intify(elComputedStyle.height) * self.zoom + 'px';
+        _this.lens.style.backgroundSize =
+          intify(elComputedStyle.width) * _this.zoom + 'px ' +
+          intify(elComputedStyle.height) * _this.zoom + 'px';
 
         // Change the focal point of the loupe image
-        self.lens.style.backgroundPosition =
-          (0 - eventOffset(event, 'X') * self.zoom + (intify(loComputedStyle.width) / 2)) + 'px ' +
-          (0 - eventOffset(event, 'Y') * self.zoom + (intify(loComputedStyle.height) / 2 | 0)) + 'px';
+        _this.lens.style.backgroundPosition =
+          (0 - eventOffset(event, 'X') * _this.zoom +
+            (intify(loComputedStyle.width) / 2)) + 'px ' +
+          (0 - eventOffset(event, 'Y') * _this.zoom +
+            (intify(loComputedStyle.height) / 2 | 0)) + 'px';
       }
 
-      self._.e = event;
+      _this._.e = event;
     },
 
     /**
@@ -249,27 +257,27 @@ function Loupe(el) {
     the .init method with a different element.
     */
     destroy: function () {
-      var self = this;
-      var elRemoveListener = self.el.removeEventListener.bind(el);
+      var _this = this;
+      var elRemoveListener = _this.el.removeEventListener.bind(_this.el);
 
       // Remove this.lens
-      if (self.lens) {
-        self.lens.parentNode.removeChild(self.lens);
-        self.lens = null;
+      if (_this.lens) {
+        _this.lens.parentNode.removeChild(_this.lens);
+        _this.lens = null;
       }
 
       // If this.liten was called when the loupe was set up,
       // remove its event listeners during destruction.
-      if (self._[_mousemove]) {
-        elRemoveListener(_touchstart, self._[_touchstart]);
-        elRemoveListener(_pointerdown, self._[_pointerdown]);
-        elRemoveListener(_mousemove, self._[_mousemove]);
-        elRemoveListener(_mouseout, self._[_mouseout]);
-        elRemoveListener(_wheel, self._[_wheel]);
+      if (_this._[_mousemove]) {
+        elRemoveListener(_touchstart, _this._[_touchstart]);
+        elRemoveListener(_pointerdown, _this._[_pointerdown]);
+        elRemoveListener(_mousemove, _this._[_mousemove]);
+        elRemoveListener(_mouseout, _this._[_mouseout]);
+        elRemoveListener(_wheel, _this._[_wheel]);
       }
 
       // Clear _ in case the user wants to re-initialize.
-      self._ = {};
+      _this._ = {};
     },
 
     /**
@@ -277,39 +285,39 @@ function Loupe(el) {
     */
     listen: function () {
       var isTouched;
-      var self = this;
-      var elAddListener = self.el.addEventListener.bind(self.el);
+      var _this = this;
+      var elAddListener = _this.el.addEventListener.bind(_this.el);
 
-      self._[_touchstart] = function () {
+      _this._[_touchstart] = function () {
         isTouched = true;
       };
 
       // IE 11 uses pointer events instead of touch* events
-      self._[_pointerdown] = function (event) {
+      _this._[_pointerdown] = function (event) {
         if (event.pointerType === 'touch') {
           isTouched = true;
         }
       };
 
-      self._[_mousemove] = function (event) {
+      _this._[_mousemove] = function (event) {
         if (!isTouched) {
-          self.refresh.call(self, event);
+          _this.refresh.call(_this, event);
         }
 
         isTouched = false;
       };
 
-      self._[_mouseout] = self.hide.bind(self);
+      _this._[_mouseout] = _this.hide.bind(_this);
 
       // Add event listners describing normal x, y movement
-      elAddListener(_touchstart, self._[_touchstart]);
-      elAddListener(_pointerdown, self._[_pointerdown]);
-      elAddListener(_mousemove, self._[_mousemove]);
-      elAddListener(_mouseout, self._[_mouseout]);
+      elAddListener(_touchstart, _this._[_touchstart]);
+      elAddListener(_pointerdown, _this._[_pointerdown]);
+      elAddListener(_mousemove, _this._[_mousemove]);
+      elAddListener(_mouseout, _this._[_mouseout]);
 
       // Add event listener describing z (mousewheel) movement
-      self._[_wheel] = self.wheel.bind(self);
-      elAddListener(_wheel, self._[_wheel]);
+      _this._[_wheel] = _this.wheel.bind(_this);
+      elAddListener(_wheel, _this._[_wheel]);
     },
 
     /**
@@ -317,23 +325,23 @@ function Loupe(el) {
     @param {WheelEvent} event - wheel event.
     */
     wheel: function (event) {
-      var self = this;
+      var _this = this;
       var zoom;
 
-      if (self.on) {
-        zoom = self.zoom + event.deltaY * 0.1;
+      if (_this.on) {
+        zoom = _this.zoom + event.deltaY * 0.1;
         zoom = (
-          zoom < self.range[0] ?
-          self.range[0] :
+          zoom < _this.range[0] ?
+          _this.range[0] :
           (
-            zoom > self.range[1] ?
-            self.range[1] :
+            zoom > _this.range[1] ?
+            _this.range[1] :
             zoom
           )
         );
-        self.zoom = zoom;
+        _this.zoom = zoom;
 
-        self.refresh(event);
+        _this.refresh(event);
 
         event.preventDefault();
       }
