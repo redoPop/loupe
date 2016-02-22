@@ -1,7 +1,10 @@
 {
   "name": "loupe",
   "description": "A lightweight image magnifier for modern browsers.",
-  "main": "loupe.js",
+  "main": [
+    "loupe.css",
+    "loupe.js"
+  ],
   "license": "ISC",
   "ignore": [
     ".editorconfig"
