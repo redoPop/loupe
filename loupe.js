@@ -354,6 +354,6 @@ https://github.com/redoPop/loupe
   } else if (typeof module === 'object' && module.exports) {
     module.exports = Loupe;
   } else {
-    root.returnExports = Loupe;
+    root.Loupe = Loupe;
   }
 }(this));
