@@ -3,23 +3,19 @@ Loupe 2.0.0
 https://github.com/redoPop/loupe
 */
 
-/**
-A new loupe instance.
-@constructor
-@param {HTMLElement}
-@example
-var loupe = new Loupe(document.getElementById('image'));
-*/
-function Loupe(el) {
+(function (root) {
   'use strict';
 
-  this.init(el);
-}
-
-// Giant IIFE to avoid scope pollution if someone needs to add
-// this source script to their project directly! (Tch!)
-(function (Loupe) {
-  'use strict';
+  /**
+  A new loupe instance.
+  @constructor
+  @param {HTMLElement}
+  @example
+  var loupe = new Loupe(document.getElementById('image'));
+  */
+  function Loupe(el) {
+    this.init(el);
+  }
 
   // Adapted from Modernizr's pointerevents feature detect
   var canPoint = document.createElement('x');
@@ -348,4 +344,16 @@ function Loupe(el) {
     }
   };
 
-}(Loupe));
+  // UMD (based on returnExports.js template)
+  // https://github.com/umdjs/umd
+  /* globals define, module */
+  if (typeof define === 'function' && define.amd) {
+    define([], function () {
+      return Loupe;
+    });
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = Loupe;
+  } else {
+    root.returnExports = Loupe;
+  }
+}(this));
