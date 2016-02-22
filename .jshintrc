@@ -5,9 +5,6 @@
   // Define globals exposed by modern browsers.
   "browser": true,
 
-  // Disallow ES6.
-  "esversion": 5,
-
   // ENFORCING OPTIONS
   // =================
 
