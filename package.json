@@ -10,6 +10,7 @@
   },
   "scripts": {
     "lint": "jshint . && jscs .",
+    "pretest": "npm run lint",
     "test": "karma start"
   },
   "dependencies": {},
