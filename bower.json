@@ -1,12 +1,14 @@
 {
   "name": "loupe",
-  "description": "A lightweight image magnifier for modern browsers.",
+  "description": "A lightweight image magnifier for modern browsers",
   "main": [
     "loupe.css",
     "loupe.js"
   ],
   "license": "ISC",
   "ignore": [
-    ".editorconfig"
+    "**/.*",
+    "karma.conf.js",
+    "test"
   ]
 }

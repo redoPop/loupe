@@ -28,6 +28,7 @@
   "disallowMultipleVarDecl": true,
   "disallowSpaceBeforeComma": true,
   "disallowSpaceBeforeSemicolon": true,
+  "excludeFiles": ["node_modules/**"],
   "requireSpaceBeforeBlockStatements": true,
   "requireParenthesesAroundIIFE": true,
   "requireSpacesInAnonymousFunctionExpression": {
