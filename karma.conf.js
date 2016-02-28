@@ -6,7 +6,7 @@ module.exports = function (config) {
   config.set({
 
     // Start these browsers
-    browsers: ['PhantomJS'],
+    browsers: ['Firefox', 'PhantomJS'],
 
     // Files to include in the test
     files: [
