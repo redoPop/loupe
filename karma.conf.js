@@ -1,5 +1,7 @@
 // Karma configuration
 
+/* jshint node:true, strict: false */
+
 module.exports = function (config) {
   config.set({
 
