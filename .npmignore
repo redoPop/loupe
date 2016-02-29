@@ -1,3 +1,4 @@
+test/
 .editorconfig
 .gitignore
 .jscsrc
@@ -6,5 +7,4 @@
 .nvmrc
 .travis.yml
 bower.json
-karma.conf.js
-test/
+testem.json
