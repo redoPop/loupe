@@ -3,5 +3,8 @@
   "src_files": [
     "loupe.js",
     "test/module.test.js"
+  ],
+  "launch_in_ci": [
+    "Firefox"
   ]
 }
