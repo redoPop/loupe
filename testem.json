@@ -2,6 +2,6 @@
   "framework": "qunit",
   "src_files": [
     "loupe.js",
-    "test/module.js"
+    "test/module.test.js"
   ]
 }
