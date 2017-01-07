@@ -262,7 +262,7 @@ https://github.com/redoPop/loupe
         _this.lens = null;
       }
 
-      // If this.liten was called when the loupe was set up,
+      // If this.listen was called when the loupe was set up,
       // remove its event listeners during destruction.
       if (_this._[_mousemove]) {
         elRemoveListener(_touchstart, _this._[_touchstart]);
