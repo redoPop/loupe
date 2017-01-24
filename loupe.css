@@ -14,7 +14,7 @@ https://github.com/redoPop/loupe
   width: 100px;
   height: 100px;
 
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
 }
