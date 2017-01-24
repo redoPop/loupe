@@ -1,0 +1,8 @@
+{
+  "env": {
+    "qunit": true
+  },
+  "globals": {
+    "Loupe": true
+  }
+}

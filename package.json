@@ -9,14 +9,13 @@
     "url": "git@github.com:redoPop/loupe.git"
   },
   "scripts": {
-    "lint": "jshint . && jscs .",
+    "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "testem ci"
   },
   "dependencies": {},
   "devDependencies": {
-    "jscs": "^3.0.7",
-    "jshint": "^2.9.4",
+    "eslint": "^3.14.0",
     "testem": "^1.14.3"
   }
 }
