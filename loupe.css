@@ -1,5 +1,5 @@
 /**
-Loupe 2.0.0
+Loupe 2.0.1
 https://github.com/redoPop/loupe
 */
 
