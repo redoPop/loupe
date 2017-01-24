@@ -15,8 +15,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "jscs": "^2.10.1",
-    "jshint": "^2.9.1",
-    "testem": "^1.4.1"
+    "jscs": "^3.0.7",
+    "jshint": "^2.9.4",
+    "testem": "^1.14.3"
   }
 }
