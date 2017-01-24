@@ -1,10 +1,7 @@
+test/
 .editorconfig
+.eslintrc.json
 .gitignore
-.jscsrc
-.jshintignore
-.jshintrc
 .nvmrc
 .travis.yml
 bower.json
-karma.conf.js
-test/

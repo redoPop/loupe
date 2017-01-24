@@ -8,7 +8,6 @@
   "license": "ISC",
   "ignore": [
     "**/.*",
-    "karma.conf.js",
     "test"
   ]
 }
