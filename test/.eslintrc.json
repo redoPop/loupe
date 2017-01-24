@@ -1,8 +1,6 @@
 {
   "env": {
-    "qunit": true
-  },
-  "globals": {
-    "Loupe": true
+    "mocha": true,
+    "node": true
   }
 }

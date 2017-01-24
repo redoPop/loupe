@@ -5,4 +5,3 @@ test/
 .nvmrc
 .travis.yml
 bower.json
-testem.json

@@ -11,11 +11,14 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "testem ci"
+    "test": "mocha"
   },
   "dependencies": {},
   "devDependencies": {
+    "assert": "^1.4.1",
     "eslint": "^3.14.0",
-    "testem": "^1.14.3"
+    "jsdom": "^9.9.1",
+    "mocha": "^3.2.0",
+    "mocha-jsdom": "^1.1.0"
   }
 }
